@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +30,6 @@ public class DiagramController {
     @Autowired
     private DiagramService diagramService;
     
-
-
     @Operation(summary = "List all diagrams",  responses = {
         @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of diagrams",
                      content = @Content(mediaType = "application/json",
@@ -40,7 +39,6 @@ public class DiagramController {
     public List<Diagram> getAllDiagrams() {
         return diagramService.getAllDiagrams();
     }
-    
     
     @Operation(summary = "Creates a new diagram", responses = {
         @ApiResponse(responseCode = "201", description = "Diagram successfully created",
@@ -63,6 +61,26 @@ public class DiagramController {
     public ResponseEntity<Diagram> getDiagramById(@PathVariable UUID id) {
         Optional<Diagram> diagram = diagramService.getDiagramById(id);
         return diagram.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @Operation(summary = "Updates an existing diagram", responses = {
+        @ApiResponse(responseCode = "200", description = "Diagram successfully updated",
+                     content = @Content(mediaType = "application/json",
+                     schema = @Schema(implementation = Diagram.class))),
+        @ApiResponse(responseCode = "404", description = "Diagram not found")
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<Diagram> updateDiagram(@PathVariable UUID id, @RequestBody Diagram updatedDiagram) {
+        Optional<Diagram> existingDiagram = diagramService.getDiagramById(id);
+        if (existingDiagram.isPresent()) {
+            Diagram diagram = existingDiagram.get();
+            diagram.setMd5(updatedDiagram.getMd5());
+            diagram.setName(updatedDiagram.getName());
+            diagram.setJsonObject(updatedDiagram.getJsonObject());
+            return ResponseEntity.ok(diagramService.saveDiagram(diagram));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Deletes a diagram by ID", responses = {

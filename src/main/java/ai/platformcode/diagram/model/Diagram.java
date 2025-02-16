@@ -1,23 +1,22 @@
 package ai.platformcode.diagram.model;
 
 import java.time.ZonedDateTime;
+import java.util.Map;
 import java.util.UUID;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "diagrams")
@@ -32,7 +31,6 @@ public class Diagram {
     private String md5;
 
     @Column(name = "modification_date", nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private ZonedDateTime modificationDate;
 
@@ -40,15 +38,15 @@ public class Diagram {
     @JsonProperty("name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "json_object_id", referencedColumnName = "id", nullable = true)
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb", nullable = false)
     @JsonProperty("json_object")
-    private JsonObject jsonObject;
+    private Map<String, Object> jsonObject;
 
     // Constructors
     public Diagram() {}
 
-    public Diagram(String md5, ZonedDateTime modificationDate, String name, JsonObject jsonObject) {
+    public Diagram(String md5, ZonedDateTime modificationDate, String name, Map<String, Object> jsonObject) {
         this.md5 = md5;
         this.modificationDate = modificationDate;
         this.name = name;
@@ -56,9 +54,8 @@ public class Diagram {
     }
 
     // Getters and Setters
-
     public UUID getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(UUID id) {
@@ -66,7 +63,7 @@ public class Diagram {
     }
 
     public String getMd5() {
-        return this.md5;
+        return md5;
     }
 
     public void setMd5(String md5) {
@@ -74,28 +71,26 @@ public class Diagram {
     }
 
     public ZonedDateTime getModificationDate() {
-        return this.modificationDate;
+        return modificationDate;
     }
 
     public void setModificationDate(ZonedDateTime modificationDate) {
-    	this.modificationDate = modificationDate;
+        this.modificationDate = modificationDate;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public JsonObject getJsonObject() {
-        return this.jsonObject;
+    public Map<String, Object> getJsonObject() {
+        return jsonObject;
     }
 
-    public void setJsonObject(JsonObject jsonObject) {
+    public void setJsonObject(Map<String, Object> jsonObject) {
         this.jsonObject = jsonObject;
     }
-
-
 }
