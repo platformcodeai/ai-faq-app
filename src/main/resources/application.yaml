@@ -1,14 +1,19 @@
 spring:
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
   datasource:
     url: jdbc:postgresql://localhost:5432/pc
     username: user
     password: password
     driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false 
     hibernate:
       ddl-auto: update
     properties:
+      hibernate.transaction.jta.platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform #Disable JPA
       hibernate:
         format_sql: true
         show_sql: true
