@@ -21,14 +21,23 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import ai.platformcode.diagram.model.Diagram;
 import ai.platformcode.diagram.repository.DiagramRepository;
 import ai.platformcode.diagram.service.DiagramService;
 import ai.platformcode.diagram.util.ServiceUtil;
+import org.springframework.transaction.annotation.Transactional;
 
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.yaml")
+@Transactional
 @ExtendWith(MockitoExtension.class)
-class DiagramCrudTests {
+@ActiveProfiles("test")
+class DiagramUnitTests {
 
     @Mock
     private DiagramRepository diagramRepository;
