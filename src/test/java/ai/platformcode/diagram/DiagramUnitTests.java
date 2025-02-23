@@ -23,9 +23,11 @@ import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
+import ai.platformcode.diagram.config.EmbeddedPostgresConfig;
 import ai.platformcode.diagram.model.Diagram;
 import ai.platformcode.diagram.repository.DiagramRepository;
 import ai.platformcode.diagram.service.DiagramService;
@@ -34,6 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.yaml")
+@Import(EmbeddedPostgresConfig.class)
 @Transactional
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("test")
