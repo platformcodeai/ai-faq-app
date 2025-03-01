@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import ai.platformcode.diagram.dto.DiagramDTO;
 import ai.platformcode.diagram.model.Diagram;
 import ai.platformcode.diagram.service.DiagramService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,12 +41,15 @@ public class DiagramController {
     @Operation(summary = "List all diagrams",  responses = {
         @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of diagrams",
                      content = @Content(mediaType = "application/json",
-                     schema = @Schema(implementation = Diagram[].class)))
+                     schema = @Schema(implementation = DiagramDTO[].class)))
     })
     @GetMapping
-    public List<Diagram> getAllDiagrams() {
-        return diagramService.getAllDiagrams();
+    public ResponseEntity<Page<DiagramDTO>> getAllDiagrams(Pageable pageable) {
+        Page<Diagram> diagrams = diagramService.getAllDiagrams(pageable);
+        Page<DiagramDTO> diagramDTOs = DiagramDTO.fromPage(diagrams);
+        return ResponseEntity.ok(diagramDTOs);
     }
+
     
     @Operation(summary = "Creates a new diagram", responses = {
         @ApiResponse(responseCode = "201", description = "Diagram successfully created",

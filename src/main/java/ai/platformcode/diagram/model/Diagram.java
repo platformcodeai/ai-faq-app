@@ -10,7 +10,9 @@ import org.hibernate.type.SqlTypes;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import ai.platformcode.diagram.controller.Views;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,18 +29,22 @@ public class Diagram {
     private UUID id;
 
     @Column(nullable = false)
+    @JsonView({Views.HideSensitive.class,Views.Default.class})
     @JsonProperty("md5")
     private String md5;
 
     @Column(name = "modification_date", nullable = true)
+    @JsonView(Views.HideSensitive.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private ZonedDateTime modificationDate;
 
     @Column(nullable = false)
+    @JsonView(Views.HideSensitive.class)
     @JsonProperty("name")
     private String name;
 
     @JdbcTypeCode(SqlTypes.JSON)
+    @JsonView(Views.Default.class)
     @Column(columnDefinition = "jsonb", nullable = false)
     @JsonProperty("json_object")
     private Map<String, Object> jsonObject;

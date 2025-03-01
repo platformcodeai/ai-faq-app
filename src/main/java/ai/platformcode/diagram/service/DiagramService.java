@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ai.platformcode.diagram.model.Diagram;
@@ -24,8 +26,8 @@ public class DiagramService {
      * Retrieves all diagrams from the database.
      * @return List of diagrams
      */
-    public List<Diagram> getAllDiagrams() {
-        return diagramRepository.findAll();
+    public Page<Diagram> getAllDiagrams(Pageable pageable) {
+        return diagramRepository.findAll(pageable);
     }
 
     /**
