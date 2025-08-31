@@ -25,6 +25,4 @@ Built with **Flask (backend)** and **React (frontend)**, it integrates with **LL
 ## 🚀 Getting Started  
 
 ### 1. Clone the Repository  
-```bash
-git clone https://github.com/your-username/ai-faq-app.git
-cd ai-faq-app
+git clone https://github.com/AXsavag/ai-faq-app.git
