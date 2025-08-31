@@ -1,2 +1,31 @@
-# ai-faq-app
-An AI-powered FAQ assistant that helps small businesses answer customer questions automatically, 24/7. 
+# AI FAQ Assistant App 🤖
+
+An **AI-powered FAQ assistant** that helps small businesses answer customer questions automatically, 24/7.  
+This is part of my portfolio as an **AI App Builder**.
+
+---
+
+## ✨ Features
+- Chat interface for users to ask questions
+- AI-powered responses (powered by OpenAI/GPT)
+- Easy to train with your own FAQ data
+- Backend API built with Python (Flask)
+- Simple frontend (React) for the chat UI
+- Deployment ready (Vercel + Render)
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React + Tailwind CSS
+- **Backend:** Flask (Python)
+- **Database:** SQLite
+- **AI Model:** OpenAI API
+- **Deployment:** Vercel (frontend), Render (backend)
+
+---
+
+## 🚀 Getting Started
+1. Clone this repo  
+   ```bash
+   git clone https://github.com/your-username/ai-faq-app.git
+   cd ai-faq-app
