@@ -1,31 +1,30 @@
-# AI FAQ Assistant App 🤖
+# AI FAQ Assistant 🤖  
 
-An **AI-powered FAQ assistant** that helps small businesses answer customer questions automatically, 24/7.  
-This is part of my portfolio as an **AI App Builder**.
-
----
-
-## ✨ Features
-- Chat interface for users to ask questions
-- AI-powered responses (powered by OpenAI/GPT)
-- Easy to train with your own FAQ data
-- Backend API built with Python (Flask)
-- Simple frontend (React) for the chat UI
-- Deployment ready (Vercel + Render)
+An **AI-powered FAQ web application** that helps businesses provide instant, accurate answers to user queries.  
+Built with **Flask (backend)** and **React (frontend)**, it integrates with **LLMs (Gemini or OpenAI)** to understand and respond to natural language questions.  
 
 ---
 
-## 🛠️ Tech Stack
-- **Frontend:** React + Tailwind CSS
-- **Backend:** Flask (Python)
-- **Database:** SQLite
-- **AI Model:** OpenAI API
-- **Deployment:** Vercel (frontend), Render (backend)
+## ✨ Features  
+- 📂 **CSV Upload**: Upload FAQs via `/api/upload` endpoint  
+- 💬 **AI Q&A**: Ask natural language questions via `/api/ask`  
+- ⚡ **Full-stack App**: Flask backend + React frontend  
+- 🤖 **LLM Support**: Works with Gemini or OpenAI APIs  
+- 🗄️ **Database Ready**: Default SQLite (easily swappable)  
 
 ---
 
-## 🚀 Getting Started
-1. Clone this repo  
-   ```bash
-   git clone https://github.com/your-username/ai-faq-app.git
-   cd ai-faq-app
+## 🛠️ Tech Stack  
+- **Backend**: Python, Flask  
+- **Frontend**: React, JavaScript  
+- **AI Models**: Gemini, OpenAI GPT  
+- **Database**: SQLite (default)  
+
+---
+
+## 🚀 Getting Started  
+
+### 1. Clone the Repository  
+```bash
+git clone https://github.com/your-username/ai-faq-app.git
+cd ai-faq-app
