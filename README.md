@@ -13,6 +13,12 @@ An AI-powered FAQ web application that helps businesses answer queries instantly
 
 ---
 
+##  Additional Folders
+- **tests/** — Backend tests for API endpoints
+- **docs/** — Placeholder for architecture diagrams or screenshots
+
+---
+
 ##  Tech Stack
 - Backend: Python / Flask
 - Frontend: React / JavaScript
