@@ -1,28 +1,28 @@
-# AI FAQ Assistant 🤖  
+# AI FAQ Assistant 🤖
 
-An **AI-powered FAQ web application** that helps businesses provide instant, accurate answers to user queries.  
-Built with **Flask (backend)** and **React (frontend)**, it integrates with **LLMs (Gemini or OpenAI)** to understand and respond to natural language questions.  
-
----
-
-## ✨ Features  
-- 📂 **CSV Upload**: Upload FAQs via `/api/upload` endpoint  
-- 💬 **AI Q&A**: Ask natural language questions via `/api/ask`  
-- ⚡ **Full-stack App**: Flask backend + React frontend  
-- 🤖 **LLM Support**: Works with Gemini or OpenAI APIs  
-- 🗄️ **Database Ready**: Default SQLite (easily swappable)  
+An AI-powered FAQ web application that helps businesses answer queries instantly using LLMs. Built with Flask & React.
 
 ---
 
-## 🛠️ Tech Stack  
-- **Backend**: Python, Flask  
-- **Frontend**: React, JavaScript  
-- **AI Models**: Gemini, OpenAI GPT  
-- **Database**: SQLite (default)  
+##  Features
+- CSV Upload via `/api/upload`
+- Chat UI powered by `/api/ask` (LLM)
+- Structured backend + React UI
+- Supports Gemini or OpenAI models
+- SQLite database (swappable)
 
 ---
 
-## 🚀 Getting Started  
+##  Tech Stack
+- Backend: Python / Flask
+- Frontend: React / JavaScript
+- Database: SQLite
+- AI: OpenAI or Gemini
 
-### 1. Clone the Repository  
+---
+
+##  Getting Started
+1. Clone:
+```bash
 git clone https://github.com/AXsavag/ai-faq-app.git
+cd ai-faq-app
