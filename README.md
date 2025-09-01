@@ -27,5 +27,4 @@ This is part of my portfolio as an **AI App Builder**.
 ## 🚀 Getting Started
 1. Clone this repo  
    ```bash
-   git clone https://github.com/your-username/ai-faq-app.git
-   cd ai-faq-app
+   git clone https://github.com/AXsavag/ai-faq-app.git
