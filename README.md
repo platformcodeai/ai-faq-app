@@ -30,3 +30,5 @@ Built with **Flask (Python)** for the backend and **React + Tailwind** for the f
 ```bash
 git clone https://github.com/AXsavag/ai-faq-app.git
 cd ai-faq-app
+
+docs: add full README with backend + frontend setup
