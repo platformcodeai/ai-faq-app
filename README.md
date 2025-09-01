@@ -40,9 +40,9 @@ A live demo link will appear here once the app is deployed.
 
 ---
 
-## 🧪 Testing & Docs
+##  Testing & Docs
 
-- **tests/** — backend tests for API endpoints and core logic. Run with:
+- **tests/** — Contains backend tests for API endpoints and core logic. Run with:
   ```bash
   cd backend
   pytest
