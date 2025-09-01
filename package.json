@@ -1,0 +1,10 @@
+{
+  "name": "ai-faq-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:frontend": "npm start --prefix frontend",
+    "start:backend": "gunicorn --chdir backend --bind 0.0.0.0:5000 run:app",
+    "install:frontend": "npm install --prefix frontend"
+  }
+}
