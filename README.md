@@ -28,3 +28,21 @@ This is part of my portfolio as an **AI App Builder**.
 1. Clone this repo  
    ```bash
    git clone https://github.com/AXsavag/ai-faq-app.git
+
+---
+
+## 🚀 Live Demo (Coming Soon)
+
+Backend: Render or Railway  
+Frontend: Vercel or Netlify  
+
+A live demo link will appear here once the app is deployed.
+
+---
+
+## 🧪 Testing & Docs
+
+- **tests/** — backend tests for API endpoints and core logic. Run with:
+  ```bash
+  cd backend
+  pytest
