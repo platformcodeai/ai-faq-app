@@ -2,5 +2,11 @@ services:
   - type: web
     name: ai-faq-backend
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn run:app --bind 0.0.0.0:$PORT
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn run:app -w 2 -b 0.0.0.0:10000
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        value: AIzaSyDpUxybdcshsNGtw5KGKmmOt3eLsKVkJOE
